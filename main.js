@@ -1,35 +1,6 @@
-// ==UserScript==
-// @name         Kopalnia Plus
-// @namespace    http://tampermonkey.net/
-// @version      0.9.0
-// @author       neyluu
-// @match        https://*.margonem.pl/*
-// @exclude      https://www.margonem.pl/*
-// @grant        none
-// ==/UserScript==
-
-(() => {
-    window.addEventListener('load', () => start());
-
-    const config = {
-        pickaxesSpawns: true,
-        pickaxes:       true,
-        depositsSpawns: true,
-        deposits:       true,
-        colors: {
-            pickaxe:        "rgba(240, 240, 240, 1)",
-            pickaxeSpawn:   "rgba(196, 196, 196, 0.75)",
-            deposit:        "rgba(255, 0, 0, 1)",
-            depositSpawn:   "rgba(255, 0, 0, 0.75)"
-        },
-        size: {
-            pickaxe:        32,
-            pickaxeSpawn:   20,
-            deposit:        32,
-            depositSpawn:   20
-        }
-    }
-
+window.main = () => {
+    window.addEventListener('load', () => start())
+    
     const pickaxesSpawns = {
         "m43":  [],
         "m64":  [],
@@ -166,4 +137,4 @@
 
         API.addCallbackToEvent('call_draw_add_to_renderer', () => Engine.renderer.add.apply(Engine.renderer, getDrawableList()));
     }
-})();
+};
